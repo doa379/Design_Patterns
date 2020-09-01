@@ -20,7 +20,7 @@ class Factory
 {
   public:
   virtual X *create() = 0;
-  void method(void) { this->create(); };
+  void method(void) { X *x = this->create(); };
 };
 
 class P : public Factory
@@ -43,6 +43,7 @@ int main()
 {
   P p;
   p.create()->method();
+  p.method();
   Q q;
   q.create()->method();
   return 0;
